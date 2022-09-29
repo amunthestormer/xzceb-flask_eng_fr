@@ -24,18 +24,24 @@ def english_to_french(english_text):
     """
     eng to french
     """
+    if english_text is None:
+        return None
     french_text = language_translator.translate(
         text = english_text,
         model_id = 'en-fr'
     ).get_result()
-    return french_text.get("translation")[0].get("translate")
+   
+    return french_text['translations'][0]['translation']  
 
 def french_to_english(french_text):
     """
     french to eng
     """
+    if french_text is None:
+        return None
     eng_text = language_translator.translate(
         text = french_text,
         model_id = 'fr-en'
     ).get_result()
-    return eng_text.get("translation")[0].get("translate")
+    
+    return eng_text['translations'][0]['translation']  
